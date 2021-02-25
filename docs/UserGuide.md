@@ -31,7 +31,6 @@ imPoster is a **desktop app for running and testing APIs, optimized for use via 
    * **`delete`**`3` : Deletes the 3rd API shown in the current list.
 
    * **`clear`** : Deletes all APIs in the current list.
-
    * **`exit`** : Exits the app.
 
 1. Refer to the [Features](#features) below for details of each command.
