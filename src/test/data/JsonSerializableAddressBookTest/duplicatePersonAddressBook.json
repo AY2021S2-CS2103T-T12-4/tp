@@ -4,12 +4,14 @@
 			"name": "Alice Pauline",
 			"phone": "94351253",
 			"email": "alice@example.com",
-			"tagged": ["friends"]
+			"tagged": ["friends"],
+			"remark": ""
 		},
 		{
 			"name": "Alice Pauline",
 			"phone": "94351253",
-			"email": "pauline@example.com"
+			"email": "pauline@example.com",
+			"remark": ""
 		}
 	]
 }
