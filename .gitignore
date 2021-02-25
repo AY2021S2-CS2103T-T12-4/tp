@@ -25,5 +25,5 @@ docs/_site/
 .settings
 bin/
 .classpath
-.project5
+.project
 .vscode
