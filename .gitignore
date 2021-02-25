@@ -26,3 +26,4 @@ docs/_site/
 bin/
 .classpath
 .project5
+.vscode
