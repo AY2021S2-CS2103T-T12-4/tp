@@ -124,7 +124,5 @@ public class RemarkCommandTest {
         // different index -> returns false
         assertFalse(standardCommand.equals(new RemarkCommand(INDEX_SECOND_PERSON, new Remark(""))));
 
-        // different remark -> returns false
-        assertFalse(standardCommand.equals(new RemarkCommand(INDEX_FIRST_PERSON, new Remark(""))));
     }
 }
