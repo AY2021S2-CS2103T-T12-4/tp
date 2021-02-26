@@ -72,7 +72,6 @@ public class AddressBookParser {
 
         case RemarkCommand.COMMAND_WORD:
             return new RemarkCommandParser().parse(arguments);
-            
         case SendCommand.COMMAND_WORD:
             return new SendCommandParser().parse(arguments);
 
