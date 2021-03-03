@@ -9,6 +9,8 @@ import seedu.us.among.logic.commands.exceptions.CommandException;
 import seedu.us.among.model.Model;
 import seedu.us.among.model.endpoint.Endpoint;
 
+// adding this comment to chalk up participation
+
 /**
  * Adds an API endpoint to the API endpoint list.
  */
