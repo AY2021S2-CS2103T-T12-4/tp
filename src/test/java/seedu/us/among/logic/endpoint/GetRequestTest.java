@@ -1,4 +1,4 @@
-package seedu.us.among.logic.request;
+package seedu.us.among.logic.endpoint;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -15,18 +15,18 @@ import seedu.us.among.model.endpoint.Endpoint;
 import seedu.us.among.model.util.SampleDataUtil;
 import seedu.us.among.testutil.TypicalEndpoints;
 
-public class DeleteRequestTest {
+public class GetRequestTest {
 
-    private final Endpoint sampleValidEndpoint = TypicalEndpoints.DELETE;
-    private final Endpoint sampleHtmlResponseEndpoint = SampleDataUtil.getSampleHtmlResponseEndpoint("DELETE");
-    private final Endpoint sampleInvalidUrlEndpoint = SampleDataUtil.getSampleInvalidUrlEndpoint("DELETE");
-    private final DeleteRequest jsonRequest = new DeleteRequest(sampleValidEndpoint);
-    private final DeleteRequest htmlRequest = new DeleteRequest(sampleHtmlResponseEndpoint);
-    private final DeleteRequest invalidUrlRequest = new DeleteRequest(sampleInvalidUrlEndpoint);
+    private final Endpoint sampleValidEndpoint = TypicalEndpoints.GET;
+    private final Endpoint sampleHtmlResponseEndpoint = SampleDataUtil.getSampleHtmlResponseEndpoint("GET");
+    private final Endpoint sampleInvalidUrlEndpoint = SampleDataUtil.getSampleInvalidUrlEndpoint("GET");
+    private final GetRequest jsonRequest = new GetRequest(sampleValidEndpoint);
+    private final GetRequest htmlRequest = new GetRequest(sampleHtmlResponseEndpoint);
+    private final GetRequest invalidUrlRequest = new GetRequest(sampleInvalidUrlEndpoint);
 
     @Test
     public void constructor_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new DeleteRequest(null));
+        assertThrows(NullPointerException.class, () -> new GetRequest(null));
     }
 
     @Test
