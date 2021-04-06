@@ -176,12 +176,14 @@ public class ResultDisplay extends UiPart<Region> {
         Label statusCodeAndPhrase = new Label(String.format("Status: %s %s", endpoint.getResponse().getStatusCode(),
                 endpoint.getReasonPhrase()));
         Label responseTime = new Label(String.format("Time: %s", endpoint.getResponse().getResponseTime()));
+        Label protocol = new Label(String.format("Protocol: %s", endpoint.getResponse().getProtocolVersion()));
         String colorCode = getColorCode(endpoint.getResponse().getStatusCode());
         method.setStyle(colorCode);
         statusCodeAndPhrase.setStyle(colorCode);
         responseTime.setStyle(colorCode);
+        protocol.setStyle(colorCode);
         responseMeta.getChildren().clear();
-        responseMeta.getChildren().addAll(method, statusCodeAndPhrase, responseTime);
+        responseMeta.getChildren().addAll(method, statusCodeAndPhrase, responseTime, protocol);
         resultDisplay.setText(textFeedback);
     }
 
