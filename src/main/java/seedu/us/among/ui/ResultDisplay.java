@@ -144,7 +144,17 @@ public class ResultDisplay extends UiPart<Region> {
      * @param feedbackToUser feedback to give user
      */
     public void feedbackHelper(String feedbackToUser) {
-        responseMeta.getChildren().clear();
+        String[] specialFeedback = {"New API", "Edited", "Method"};
+        boolean match = false;
+        for (String special : specialFeedback) {
+            match = feedbackToUser.startsWith(special);
+            if (match) {
+                break;
+            }
+        }
+        if (!match && feedbackToUser.length() > 0) {
+            responseMeta.getChildren().clear();
+        }
         resultDisplay.setText(feedbackToUser);
     }
 
