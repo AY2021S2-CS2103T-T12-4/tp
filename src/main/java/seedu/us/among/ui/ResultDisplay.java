@@ -191,13 +191,13 @@ public class ResultDisplay extends UiPart<Region> {
         if (!(headerStart < 9)) {
             result = result + "Headers:\n" + dividers;
             if (!(tagStart < 7)) {
-                result = result + feedback.substring(headerStart, tagStart) + "\n";
+                result = result + feedback.substring(headerStart, tagStart);
             } else {
-                result = result + feedback.substring(headerStart, meta) + "\n";
+                result = result + feedback.substring(headerStart, meta);
             }
         }
         if (tagStart > 0) {
-            result = result + "Tags:\n" + dividers + feedback.substring(tagStart + 6, meta) + "\n";
+            result = result + "Tags:\n" + dividers + feedback.substring(tagStart + 6, meta);
         }
         result = result + "Last Saved Response:\n" + dividers + feedback.substring(response + 15);
         return result;
