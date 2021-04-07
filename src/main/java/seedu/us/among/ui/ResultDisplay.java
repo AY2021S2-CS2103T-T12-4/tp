@@ -167,17 +167,37 @@ public class ResultDisplay extends UiPart<Region> {
                 responseMeta.getChildren().add(method);
             }
             //beautifying feedback
-            int addressStart = feedbackToUser.indexOf("http");
-            String address = feedbackToUser.substring(addressStart);
-            int addressEnd = address.indexOf("\n") + addressStart;
-            String query = "Response Body:\n";
-            int response = feedbackToUser.indexOf(query) + query.length();
-            String dividers = "============\n\n";
-            String beautified = "Endpoint:\n" + dividers + feedbackToUser.substring(addressStart, addressEnd)
-                    + "\n\nResponse Body:\n" + dividers + feedbackToUser.substring(response);
+
+            String beautified = beautify(feedbackToUser);
             feedbackToUser = beautified;
         }
         resultDisplay.setText(feedbackToUser);
+    }
+
+    private String beautify(String feedback) {
+        String dividers = "============\n\n";
+        String result = "Endpoint:\n" + dividers;
+        int addressStart = feedback.indexOf("http");
+        String address = feedback.substring(addressStart);
+        int addressEnd = address.indexOf("\n") + addressStart;
+        result = result + feedback.substring(addressStart, addressEnd) + "\n\n";
+        int headerStart = feedback.indexOf("Headers:\n") + 9;
+        int tagStart = feedback.indexOf("Tags:\n");
+        int meta = feedback.indexOf("Last Response:");
+        int response = feedback.indexOf("Response Body:\n");
+        if (!(headerStart < 9)) {
+            result = result + "Headers:\n" + dividers;
+            if (!(tagStart < 7)) {
+                result = result + feedback.substring(headerStart, tagStart) + "\n";
+            } else {
+                result = result + feedback.substring(headerStart, meta) + "\n";
+            }
+        }
+        if (tagStart > 0) {
+            result = result + "Tags:\n" + dividers + feedback.substring(tagStart + 6, meta) + "\n";
+        }
+        result = result + "Last Saved Response:\n" + dividers + feedback.substring(response + 15);
+        return result;
     }
 
     /**
