@@ -145,6 +145,7 @@ public class ResultDisplay extends UiPart<Region> {
      */
     public void feedbackHelper(String feedbackToUser) {
         String[] specialFeedback = {"New API", "Edited", "Method"};
+        responseMeta.getChildren().clear();
         boolean match = false;
         for (String special : specialFeedback) {
             match = feedbackToUser.startsWith(special);
@@ -152,28 +153,22 @@ public class ResultDisplay extends UiPart<Region> {
                 break;
             }
         }
-        if (!match && feedbackToUser.length() > 0) {
-            responseMeta.getChildren().clear();
-        }
         if (match) {
-            if (responseMeta.getChildren().size() < 4) {
-                responseMeta.getChildren().clear();
-                int methodStart = feedbackToUser.indexOf("Method") + 8;
-                String cutString = feedbackToUser.substring(methodStart);
-                int methodEnd = cutString.indexOf("\n") + methodStart;
-                String methodName = feedbackToUser.substring(methodStart, methodEnd);
-                String noData = "No Data";
-                Label method = new Label(String.format("Method: %s", methodName));
-                Label statusCodeAndPhrase = new Label(String.format("Status: %s", noData));
-                Label responseTime = new Label(String.format("Time: %s", noData));
-                Label protocol = new Label(String.format("Protocol: %s", noData));
-                String colorCode = "-fx-background-color: #999999";
-                method.setStyle(colorCode);
-                statusCodeAndPhrase.setStyle(colorCode);
-                responseTime.setStyle(colorCode);
-                protocol.setStyle(colorCode);
-                responseMeta.getChildren().addAll(method, statusCodeAndPhrase, responseTime, protocol);
-            }
+            int methodStart = feedbackToUser.indexOf("Method") + 8;
+            String cutString = feedbackToUser.substring(methodStart);
+            int methodEnd = cutString.indexOf("\n") + methodStart;
+            String methodName = feedbackToUser.substring(methodStart, methodEnd);
+            String noData = "No Data";
+            Label method = new Label(String.format("Method: %s", methodName));
+            Label statusCodeAndPhrase = new Label(String.format("Status: %s", noData));
+            Label responseTime = new Label(String.format("Time: %s", noData));
+            Label protocol = new Label(String.format("Protocol: %s", noData));
+            String colorCode = "-fx-background-color: #999999";
+            method.setStyle(colorCode);
+            statusCodeAndPhrase.setStyle(colorCode);
+            responseTime.setStyle(colorCode);
+            protocol.setStyle(colorCode);
+            responseMeta.getChildren().addAll(method, statusCodeAndPhrase, responseTime, protocol);
             //beautifying feedback
             String beautified = beautify(feedbackToUser);
             feedbackToUser = beautified;
