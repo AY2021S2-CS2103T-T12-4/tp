@@ -155,15 +155,27 @@ public class ResultDisplay extends UiPart<Region> {
         if (!match && feedbackToUser.length() > 0) {
             responseMeta.getChildren().clear();
         }
-        if (match && responseMeta.getChildren().size() < 4) {
-            responseMeta.getChildren().clear();
-            int methodStart = feedbackToUser.indexOf("Method") + 8;
-            String cutString = feedbackToUser.substring(methodStart);
-            int methodEnd = cutString.indexOf("\n") + methodStart;
-            String methodName = feedbackToUser.substring(methodStart, methodEnd);
-            Label method = new Label(String.format("Method: %s", methodName));
-            method.setStyle("-fx-background-color: #228B22");
-            responseMeta.getChildren().add(method);
+        if (match) {
+            if (responseMeta.getChildren().size() < 4) {
+                responseMeta.getChildren().clear();
+                int methodStart = feedbackToUser.indexOf("Method") + 8;
+                String cutString = feedbackToUser.substring(methodStart);
+                int methodEnd = cutString.indexOf("\n") + methodStart;
+                String methodName = feedbackToUser.substring(methodStart, methodEnd);
+                Label method = new Label(String.format("Method: %s", methodName));
+                method.setStyle("-fx-background-color: #228B22");
+                responseMeta.getChildren().add(method);
+            }
+            //beautifying feedback
+            int addressStart = feedbackToUser.indexOf("http");
+            String address = feedbackToUser.substring(addressStart);
+            int addressEnd = address.indexOf("\n") + addressStart;
+            String query = "Response Body:\n";
+            int response = feedbackToUser.indexOf(query) + query.length();
+            String DIVIDERS = "============\n\n";
+            String beautified = "Endpoint:\n" + DIVIDERS + feedbackToUser.substring(addressStart, addressEnd)
+                    + "\n\nResponse Body:\n" + DIVIDERS + feedbackToUser.substring(response);
+            feedbackToUser = beautified;
         }
         resultDisplay.setText(feedbackToUser);
     }
