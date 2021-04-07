@@ -172,9 +172,9 @@ public class ResultDisplay extends UiPart<Region> {
             int addressEnd = address.indexOf("\n") + addressStart;
             String query = "Response Body:\n";
             int response = feedbackToUser.indexOf(query) + query.length();
-            String DIVIDERS = "============\n\n";
-            String beautified = "Endpoint:\n" + DIVIDERS + feedbackToUser.substring(addressStart, addressEnd)
-                    + "\n\nResponse Body:\n" + DIVIDERS + feedbackToUser.substring(response);
+            String dividers = "============\n\n";
+            String beautified = "Endpoint:\n" + dividers + feedbackToUser.substring(addressStart, addressEnd)
+                    + "\n\nResponse Body:\n" + dividers + feedbackToUser.substring(response);
             feedbackToUser = beautified;
         }
         resultDisplay.setText(feedbackToUser);
